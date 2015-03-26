@@ -11,12 +11,13 @@ public class LanceurPartieRushHour
 {
 
 	/**
-	 * @param args
+	 * Le point d'entre de l'application
+	 * @param args non utilise
 	 */
 	public static void main(String[] args)
 	{
-		// TODO Auto-generated method stub
 		Plateau plateau = new Plateau();
+		System.out.println(plateau);
 
 	}
 
