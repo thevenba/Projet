@@ -1,58 +1,39 @@
+/* TODO JAVADOC. */
 package fr.iutvalence.java.tp.rushhour;
 
 /**
- * Classe permettant de representer un plateau
- * 
- * @author duboitho
+ * Plateau de jeu.
  *
+ * @author duboitho
+ * @version 1.0.0
  */
-public abstract class Plateau
-{
-	/**
-	 * Le nombre de colonnes d'un plateau soit 6
-	 */
-	public final static int NB_COL = 6;
-	
-	/**
-	 * Le nombre de lignes d'un plateau soit 6
-	 */
-	public final static int NB_LIG = 6;
-	
-	/**
-	 * Les cases du plateau
-	 */
-	protected Case[][] cases;
-	
-	/**
-	 * Construire un nouveau plateau vide
-	 */
-	public Plateau()
-	{
-		this.cases = new Case[NB_LIG][NB_COL];
-		for (int indiceL = 0; indiceL < NB_LIG; indiceL++)
-			for (int indiceC = 0; indiceC < NB_COL; indiceC++)
-				this.cases[indiceL][indiceC] = new Case(Case.VIDE);
-		this.cases[2][5].modifierEstSortie(true);
-	}
-	
-	/**
-	 * Obtenir une representation en ASCII-art du plateau, ou chaque cas est représente par un symbole associé à son etat.
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	public String toString()
-	{
-		String plateauAsciiArt = "";
+public abstract class Plateau {
+    /** Nombre de colonnes. */
+    public static final int NB_COL = 6;
+    /** Nombre de lignes. */
+    public static final int NB_LIG = 6;
+    /** Plateau. */
+    protected Case[][] cases;
 
-		for (int indiceL = 0; indiceL < NB_LIG; indiceL++)
-		{
-			for (int indiceC = 0; indiceC < NB_COL; indiceC++)
-				plateauAsciiArt += this.cases[indiceL][indiceC];
-			plateauAsciiArt += "\n";
-		}
+    /** Construire un nouveau plateau vide. */
+    public Plateau() {
+        cases = new Case[NB_LIG][NB_COL];
+        for (int indiceL = 0; indiceL < NB_LIG; indiceL++) {
+            for (int indiceC = 0; indiceC < NB_COL; indiceC++) { cases[indiceL][indiceC] = new Case(Case.VIDE); }
+        }
+        cases[2][5].modifierEstSortie(true);
+    }
 
-		return plateauAsciiArt;
-	}
-	
-	
+    @Override
+    public String toString() {
+        /* TODO String vs StringBuffer vs StringBuilder. */
+        String plateauAsciiArt = "";
+
+        for (int indiceL = 0; indiceL < NB_LIG; indiceL++) {
+            for (int indiceC = 0; indiceC < NB_COL; indiceC++) { plateauAsciiArt += cases[indiceL][indiceC]; }
+            plateauAsciiArt += "\n";
+        }
+
+        return plateauAsciiArt;
+    }
 }
