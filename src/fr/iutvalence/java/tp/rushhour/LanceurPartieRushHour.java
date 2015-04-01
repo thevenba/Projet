@@ -16,7 +16,7 @@ public class LanceurPartieRushHour
 	 */
 	public static void main(String[] args)
 	{
-		Plateau plateau = new Plateau();
+		Plateau plateau = new Niveau1();
 		System.out.println(plateau);
 
 	}
