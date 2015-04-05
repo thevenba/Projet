@@ -1,25 +1,34 @@
 package fr.iutvalence.java.tp.rushhour;
 
-/* TODO JAVADOC. */
+/**
+ * Un plateau de niveau 1
+ * 
+ * @author thevenba
+ * @version 1.1.0
+ */
 public class Niveau1 extends Plateau {
+	
+	/**
+	 * 
+	 */
+	public Niveau1()
+	{
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * Construire un plateau de niveau 1
-     */
-    public Niveau1() {
-        super();
-        this.cases[0][0].modifierEstVide(Case.PLEINE);
-        this.cases[0][1].modifierEstVide(Case.PLEINE);
-        this.cases[0][5].modifierEstVide(Case.PLEINE);
-        this.cases[1][0].modifierEstVide(Case.PLEINE);
-        this.cases[1][3].modifierEstVide(Case.PLEINE);
-        this.cases[1][5].modifierEstVide(Case.PLEINE);
-        this.cases[2][0].modifierEstVide(Case.PLEINE);
-        this.cases[2][1].modifierEstVide(Case.PLEINE);
-        this.cases[2][2].modifierEstVide(Case.PLEINE);
-        this.cases[2][3].modifierEstVide(Case.PLEINE);
-        this.cases[2][5].modifierEstVide(Case.PLEINE);
-        this.cases[3][0].modifierEstVide(Case.PLEINE);
-        this.cases[3][3].modifierEstVide(Case.PLEINE);
-    }
+	@Override
+	public void creerVehicules()
+	{
+		this.nbVehicules = 8;
+        this.vehicules = new Vehicule[this.nbVehicules];
+		this.vehicules[0] = new Vehicule(Vehicule.HORIZONTALE, 2, Couleur.ROUGE, new Position(2,2));
+		this.vehicules[1] = new Vehicule(Vehicule.HORIZONTALE, 2, Couleur.BLEU_CLAIR, new Position(4,5));
+		this.vehicules[2] = new Vehicule(Vehicule.VERTICALE, 3, Couleur.BLEU_FONCE, new Position(3,3));
+		this.vehicules[3] = new Vehicule(Vehicule.VERTICALE, 3, Couleur.JAUNE, new Position(2,5));
+		this.vehicules[4] = new Vehicule(Vehicule.VERTICALE, 2, Couleur.ORANGE, new Position(5,0));
+		this.vehicules[5] = new Vehicule(Vehicule.HORIZONTALE, 2, Couleur.VERT_CLAIR, new Position(0,1));
+		this.vehicules[6] = new Vehicule(Vehicule.HORIZONTALE, 3, Couleur.VERT_FONCE, new Position(5,4));
+		this.vehicules[7] = new Vehicule(Vehicule.VERTICALE, 3, Couleur.VIOLET, new Position(3,0));
+	}
 }

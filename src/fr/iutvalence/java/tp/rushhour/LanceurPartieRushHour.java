@@ -3,8 +3,8 @@ package fr.iutvalence.java.tp.rushhour;
 /**
  * Lance une partie de Rush Hour.
  *
- * @author TODO
- * @version 1.0.0
+ * @author duboitho
+ * @version 1.1.0
  */
 public class LanceurPartieRushHour {
 
@@ -14,7 +14,6 @@ public class LanceurPartieRushHour {
      * @param args non utilise
      */
     public static void main(String[] args) {
-        Plateau plateau = new Niveau1();
-        System.out.println(plateau);
+        System.out.println(new Niveau1());
     }
 }
