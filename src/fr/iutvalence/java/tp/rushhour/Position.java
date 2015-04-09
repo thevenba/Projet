@@ -8,37 +8,37 @@ package fr.iutvalence.java.tp.rushhour;
  */
 public class Position
 {
-	/** Le numero de ligne */
-	private final int numLigne;
-	/** Le numero de colonne */
-	private final int numColonne;
+	/** Numero of row */
+	private final int noRow;
+	/** Numero of column */
+	private final int noColumn;
 	
 	/**
-	 * Construit une nouvelle position, a l'intersection ligne/colonne donnee
-	 * @param numLigne le numero de ligne
-	 * @param numColonne le numero de colonne
+	 * Build a new position, from a given row/column intersection
+	 * @param noRow the numero of row
+	 * @param noColumn the numero of column
 	 */
-	public Position(int numLigne, int numColonne)
+	public Position(int noRow, int noColumn)
 	{
-		this.numLigne = numLigne;
-		this.numColonne = numColonne;
+		this.noRow = noRow;
+		this.noColumn = noColumn;
 	}
 
 	/**
-	 * Obtenir le numero de ligne
-	 * @return le numero de ligne
+	 * Get the numero of row
+	 * @return the numero of row
 	 */
-	public int obtenirNumLigne()
+	public int getNoRow()
 	{
-		return this.numLigne;
+		return this.noRow;
 	}
 
 	/**
-	 * Obtenir le numero de ligne
-	 * @return le numero de ligne
+	 * Get the numero of column
+	 * @return the numero of column
 	 */
-	public int obtenirNumColonne()
+	public int getNoColumn()
 	{
-		return this.numColonne;
+		return this.noColumn;
 	}
 }
