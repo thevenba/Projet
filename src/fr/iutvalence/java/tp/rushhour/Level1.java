@@ -8,13 +8,9 @@ package fr.iutvalence.java.tp.rushhour;
  */
 public class Level1 extends Board {
 	
-	/**
-	 * 
-	 */
 	public Level1()
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

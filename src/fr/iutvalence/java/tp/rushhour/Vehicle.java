@@ -44,6 +44,13 @@ public class Vehicle
 				this.positions[indexPos] = new Position(this.positions[0].getNoRow()-indexPos, this.positions[0].getNoColumn());
 	}
 
+	/** JAVADOC.
+	 * 
+	 * @return
+	 */
+	public Position[] getPositions() {
+		return this.positions;
+	}
 	/**
 	 * Get the vehicle's size
 	 * @return The vehicle's size

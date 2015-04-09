@@ -1,5 +1,7 @@
 package fr.iutvalence.java.tp.rushhour;
 
+import java.util.List;
+
 /**
  * Game's board.
  *
@@ -12,30 +14,27 @@ public abstract class Board {
     /** Number of rows. */
     public static final int NB_ROW = 6;
     /** Board. */
-    protected Square[][] squares;
-    /** Board's vehicles */
-    protected Vehicle[] vehicles;
-    /** Number of vehicles on the board */
-    protected int nbVehicles;
+    private Square[][] squares;
 
     /** Build a new board. */
-    public Board() {
+    protected Board() {
         this.squares = new Square[NB_ROW][NB_COL];
         for (int indexR = 0; indexR < NB_ROW; indexR++) 
             for (int indexC = 0; indexC < NB_COL; indexC++)
             	this.squares[indexR][indexC] = new Square();
-        this.createVehicle();
-        for (int indexVehicle = 0; indexVehicle < this.nbVehicles; indexVehicle++)
-        {
-        	for (int indexSize = 0; indexSize < this.vehicles[indexVehicle].getSize(); indexSize++)
-            	this.addVehicle(this.vehicles[indexVehicle].getPositions(indexSize), this.vehicles[indexVehicle]);
+        
+        final List<Vehicle> vehicles = this.createVehicle();
+        for (final Vehicle vehicle : vehicles) {
+        	for (final Position position : vehicle.getPositions()) {
+        		this.addVehicle(position, vehicle);
+        	}
         }
     }
     
     /**
      * Build board's vehicles
      */
-    public abstract void createVehicle();
+    public abstract List<Vehicle> createVehicle();
 
 	/**
      * Get the board's square from a given position
@@ -52,7 +51,7 @@ public abstract class Board {
      * @param position the position
      * @param vehicle the vehicle
      */
-    public void addVehicle(Position position, Vehicle vehicle)
+    private void addVehicle(Position position, Vehicle vehicle)
     {
     	this.getSquare(position).setVehicle(vehicle);
     }
