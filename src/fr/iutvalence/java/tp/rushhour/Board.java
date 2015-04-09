@@ -14,59 +14,57 @@ public abstract class Board {
     /** Number of rows. */
     public static final int NB_ROW = 6;
     /** Board. */
-    private Square[][] squares;
+    private final Square[][] squares;
 
     /** Build a new board. */
     protected Board() {
-        this.squares = new Square[NB_ROW][NB_COL];
-        for (int indexR = 0; indexR < NB_ROW; indexR++) 
-            for (int indexC = 0; indexC < NB_COL; indexC++)
-            	this.squares[indexR][indexC] = new Square();
-        
-        final List<Vehicle> vehicles = this.createVehicle();
-        for (final Vehicle vehicle : vehicles) {
-        	for (final Position position : vehicle.getPositions()) {
-        		this.addVehicle(position, vehicle);
-        	}
+        squares = new Square[NB_ROW][NB_COL];
+        for (int indexR = 0; indexR < NB_ROW; indexR++) {
+            for (int indexC = 0; indexC < NB_COL; indexC++) { this.squares[indexR][indexC] = new Square(); }
+        }
+        for (final Vehicle vehicle : createVehicle()) {
+            for (final Position position : vehicle.getPositions()) {
+                this.addVehicle(position, vehicle);
+            }
         }
     }
-    
-    /**
-     * Build board's vehicles
-     */
-    public abstract List<Vehicle> createVehicle();
 
-	/**
-     * Get the board's square from a given position
+    /**
+     * Build board's vehicles.
+     * <p>
+     * TODO Details the contract behind this method (null allowed ? empty allowed ? and so on…).
+     */
+    protected abstract List<Vehicle> createVehicle();
+
+    /**
+     * Get the board's square from a given position.
+     *
      * @param position the position
+     *
      * @return the board's square from the given position
      */
-    public Square getSquare(Position position)
-    {
-    	return this.squares[position.getNoRow()][position.getNoColumn()];
+    public Square getSquare(Position position) {
+        return this.squares[position.getNoRow()][position.getNoColumn()];
     }
-    
+
     /**
-     * Put a given vehicle on the square from a given position
+     * Put a given vehicle on the square from a given position.
+     *
      * @param position the position
-     * @param vehicle the vehicle
+     * @param vehicle  the vehicle
      */
-    private void addVehicle(Position position, Vehicle vehicle)
-    {
-    	this.getSquare(position).setVehicle(vehicle);
+    private void addVehicle(Position position, Vehicle vehicle) {
+        this.getSquare(position).setVehicle(vehicle);
     }
- 
-    /**
-     * @see java.lang.Object#toString()
-     */
+
+    @Override
     public String toString() {
         /* TODO String vs StringBuffer vs StringBuilder. */
         String asciiArtBoard = "------------------------\n";
-
-        for (int indexR = 0; indexR < NB_ROW; indexR++) 
-        {
-            for (int indexC = 0; indexC < NB_COL; indexC++) 
-            	asciiArtBoard += this.getSquare(new Position(indexR,indexC));
+        for (int indexR = 0; indexR < NB_ROW; indexR++) {
+            for (int indexC = 0; indexC < NB_COL; indexC++) {
+                asciiArtBoard += this.getSquare(new Position(indexR, indexC));
+            }
             asciiArtBoard += "\n------------------------\n";
         }
         return asciiArtBoard;
