@@ -56,6 +56,24 @@ public abstract class Board {
     private void addVehicle(Position position, Vehicle vehicle) {
         this.getSquare(position).setVehicle(vehicle);
     }
+    
+    public boolean moveForward(Position position) {
+    	Vehicle vehicleToMove = getSquare(position).getVehicle();
+    	// TODO Exception.
+    	if (vehicleToMove == null) {
+    		throws new //
+    	}
+    	
+    	Position[] initial = vehicleToMove.getPositions();
+    	// TODO Generer finale tenant du delta issu de l'orientation
+    	// TODO Test que le nouveau 0 ou n-1 est dispo + dans le plateau sinon Exception.
+    	// TODO for (
+    	if (vehicleToMove.isOrientation() == Vehicle.HORIZONTAL) {
+    		if (getSquare(vehicleToMove.getPositions()[0].getNoColumn() + 1).getVehicle == null)
+    			for (final Position indicePos : vehicleToMove.getPositions())
+    				vehicleToMove.getPosition
+    	}
+    }
 
     @Override
     public String toString() {

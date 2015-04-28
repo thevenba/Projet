@@ -54,15 +54,25 @@ public class Vehicle {
     }
 
     /**
-     * Get the vehicule's positions
+     * Get the vehicle's positions
      * 
-     * @return the vehicule's positions
+     * @return the positions
      */
     public Position[] getPositions() {
         return this.positions;
     }
+    
+    /**
+     * Get the vehicle's orientation
+     * 
+	 * @return the orientation
+	 */
+	public boolean isOrientation()
+	{
+		return this.orientation;
+	}
 
-    @Override
+	@Override
     public String toString() {
         return this.color.toString();
     }

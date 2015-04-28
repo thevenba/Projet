@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Level1 extends Board {
     @Override
-    public List<Vehicle> createVehicle() {
+    protected List<Vehicle> createVehicle() {
         final List<Vehicle> vehicles = new LinkedList<>();
         vehicles.add(new Vehicle(Vehicle.HORIZONTAL, 2, Color.RED, new Position(2, 2)));
         vehicles.add(new Vehicle(Vehicle.HORIZONTAL, 2, Color.LIGHT_BLUE, new Position(4, 5)));
