@@ -23,10 +23,12 @@ public enum Color {
     DARK_GREEN("dg"),
     /** Purple color. */
     PURPLE("p ");
-    /* TODO JAVADOC. */
+    /** String to display */
     private final String display;
 
-    /* TODO JAVADOC. */
+    /**
+     * Build a color with a given dsiplay.
+     */
     Color(final String disp) {
         display = disp;
     }

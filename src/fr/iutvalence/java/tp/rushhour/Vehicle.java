@@ -53,7 +53,11 @@ public class Vehicle {
         }
     }
 
-    /* TODO JAVADOC. */
+    /**
+     * Get the vehicule's positions
+     * 
+     * @return the vehicule's positions
+     */
     public Position[] getPositions() {
         return this.positions;
     }

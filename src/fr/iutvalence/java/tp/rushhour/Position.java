@@ -1,9 +1,8 @@
 package fr.iutvalence.java.tp.rushhour;
 
-/* TODO Translate. */
 
 /**
- * Represente une position, a l'intersection, d'une ligne et d'une colonne.
+ * Position at the intersection of a row and a column. 
  *
  * @author thevenba
  * @version 1.0.0
