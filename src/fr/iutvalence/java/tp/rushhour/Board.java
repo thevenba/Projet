@@ -74,48 +74,102 @@ public abstract class Board
 	/**
 	 * Delete the vehicle on the square from a given position.
 	 * 
-	 * @param position the position
+	 * @param position
+	 *            the position
 	 */
 	private void delVehicle(Position position)
 	{
 		this.getSquare(position).setVehicle(null);
 	}
-	
+
 	/**
 	 * @param position
+	 * @param numberOfSquares
 	 * @return
 	 * @throws vehicleNullException
-	 * @throws obstructingVehicleException 
-	 * @throws positionOutsideBoundary 
+	 * @throws obstructingVehicleException
+	 * @throws positionOutsideBoundary
 	 */
-	public boolean moveForward(Position position) throws vehicleNullException, obstructingVehicleException, positionOutsideBoundary {
-    	Vehicle vehicleToMove = getSquare(position).getVehicle();
-    	if (vehicleToMove == null)
-    		throw new vehicleNullException("There is no vehicle right here !");
-		Position[] initialPositions = vehicleToMove.getPositions();
-		Position[] finalPositions = initialPositions;
-    	if (vehicleToMove.isOrientation() == Vehicle.HORIZONTAL)
-    	{
-    		if (getSquare(initialPositions[0]).getVehicle() != null)
-	    		throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
-	    	if (initialPositions[0].getNoColumn() > NB_COL)
-	    		throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
-	    	for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
-	    		finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), 0, finalPositions[indexPosition].getNoColumn(), 1);
-	    	for (int indexInitPosition = 0; indexInitPosition < initialPositions.length; indexInitPosition++)
-	    		this.delVehicle(initialPositions[indexInitPosition]);
-	    	for (int indexFinalPositions = 0; indexFinalPositions < finalPositions.length; indexFinalPositions++)
-	    		this.addVehicle(finalPositions[indexFinalPositions], vehicleToMove);
-	    	return true;
-    	}
-    	// TODO faire la même chose que precedement mais si vertical
-	    else
-	    {
-     		for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
-	    		finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), 1, finalPositions[indexPosition].getNoColumn(), 0);
-     		return true;
-	    }
-    }
+	public void moveVehicle(Position position, int numberOfSquares) throws vehicleNullException, obstructingVehicleException,
+			positionOutsideBoundary
+	{
+		Vehicle vehicleToMove = getSquare(position).getVehicle();
+		if (vehicleToMove == null)
+			throw new vehicleNullException("There is no vehicle right here !");
+		if (numberOfSquares >= 0)
+		{
+			for (int indexSquare = 0; indexSquare < numberOfSquares; indexSquare++)
+			{
+				Position[] initialPositions = vehicleToMove.getPositions();
+				Position[] finalPositions = initialPositions;
+				if (vehicleToMove.isOrientation() == Vehicle.HORIZONTAL)
+				{
+					if (getSquare(new Position(initialPositions[0].getNoRow(), 0, initialPositions[0].getNoColumn(), 1)).getVehicle() != null)
+						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
+					if (initialPositions[0].getNoColumn()+1 > NB_COL)
+						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
+					for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
+						finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), 0,
+								finalPositions[indexPosition].getNoColumn(), 1);
+					moveVehicleOnTheBoard(vehicleToMove, initialPositions, finalPositions);
+				}
+				else
+				{
+					if (getSquare(new Position(initialPositions[0].getNoRow(), 1, initialPositions[0].getNoColumn(), 0)).getVehicle() != null)
+						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
+					if (initialPositions[0].getNoRow()+1 > NB_ROW)
+						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
+					for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
+						finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), 1,
+								finalPositions[indexPosition].getNoColumn(), 0);
+					moveVehicleOnTheBoard(vehicleToMove, initialPositions, finalPositions);
+				}
+			}
+		}
+		else
+		{
+			for (int indexSquare = 0; indexSquare > numberOfSquares; indexSquare--)
+			{
+				Position[] initialPositions = vehicleToMove.getPositions();
+				Position[] finalPositions = initialPositions;
+				if (vehicleToMove.isOrientation() == Vehicle.HORIZONTAL)
+				{
+					if (getSquare(new Position(initialPositions[initialPositions.length].getNoRow(), 0, initialPositions[initialPositions.length].getNoColumn(), -1)).getVehicle() != null)
+						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
+					if (initialPositions[initialPositions.length].getNoColumn()-1 < 0)
+						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
+					for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
+						finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), 0,
+								finalPositions[indexPosition].getNoColumn(), -1);
+					moveVehicleOnTheBoard(vehicleToMove, initialPositions, finalPositions);
+				}
+				else
+				{
+					if (getSquare(new Position(initialPositions[initialPositions.length].getNoRow(), -1, initialPositions[initialPositions.length].getNoColumn(), 0)).getVehicle() != null)
+						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
+					if (initialPositions[initialPositions.length].getNoRow()-1 < 0)
+						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
+					for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
+						finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), -1,
+								finalPositions[indexPosition].getNoColumn(), 0);
+					moveVehicleOnTheBoard(vehicleToMove, initialPositions, finalPositions);
+				}
+			}
+		}
+	}
+
+	/**
+	 * @param vehicleToMove
+	 * @param initialPositions
+	 * @param finalPositions
+	 */
+	private void moveVehicleOnTheBoard(Vehicle vehicleToMove, Position[] initialPositions, Position[] finalPositions)
+	{
+		for (int indexInitPosition = 0; indexInitPosition < initialPositions.length; indexInitPosition++)
+			this.delVehicle(initialPositions[indexInitPosition]);
+		for (int indexFinalPositions = 0; indexFinalPositions < finalPositions.length; indexFinalPositions++)
+			this.addVehicle(finalPositions[indexFinalPositions], vehicleToMove);
+	}
 
 	@Override
 	public String toString()
