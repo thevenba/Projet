@@ -3,6 +3,7 @@ package fr.iutvalence.java.tp.rushhour;
 import java.util.Scanner;
 
 import javax.swing.plaf.BorderUIResource.CompoundBorderUIResource;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
 /**
  * Launch a game.
@@ -20,7 +21,21 @@ public class GameLauncher {
      * @param args not used
      */
     public static void main(final String... args) {
-        Board currentBoard = new Level2();
+    	Board currentBoard;
+    	System.out.println("Choose your level, from 1 to 40");
+    	Scanner level = new Scanner (System.in);
+    	int levelToLoad = level.nextInt();
+    	switch (levelToLoad)
+    	{
+    	case 1 : 
+    		currentBoard = new Level1();
+    		break;
+    	case 2 : 
+    		currentBoard = new Level2();
+    		break;
+    	default :
+    		currentBoard = new Level1();
+    	}
     	System.out.println(currentBoard);
     	while(true)
     	{
@@ -41,7 +56,7 @@ public class GameLauncher {
     		try
     		{
     			currentBoard.moveVehicle(new Position(ordonnee, abscisse), moveToDo);
-    		} catch (vehicleNullException | obstructingVehicleException | positionOutsideBoundary | invalidPositionException e)
+    		} catch (vehicleNullException | obstructingVehicleException | positionOutsideBoundaryException | invalidPositionException e)
     		{
     			e.printStackTrace();
     		}

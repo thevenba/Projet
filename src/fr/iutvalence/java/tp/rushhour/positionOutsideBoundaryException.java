@@ -8,13 +8,13 @@ package fr.iutvalence.java.tp.rushhour;
  * @author thevenba
  *
  */
-public class positionOutsideBoundary extends Exception
+public class positionOutsideBoundaryException extends Exception
 {
 
 	/**
 	 * @param message
 	 */
-	public positionOutsideBoundary(String message)
+	public positionOutsideBoundaryException(String message)
 	{
 		super(message);
 	}

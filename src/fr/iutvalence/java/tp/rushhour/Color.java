@@ -23,22 +23,25 @@ public enum Color {
     DARK_GREEN("dg"),
     /** Purple color. */
     PURPLE("p "), 
-    /** light purple color*/
+    /** Light purple color*/
     LIGHT_PURPLE("lp"), 
-    /** dark (non)color*/
-    BLACK("bl");
+    /** Black (non)color*/
+    BLACK("bl"), 
+    /** Pink color */
+    PINK("pi");
     /** String to display */
     private final String display;
 
     /**
-     * Build a color with a given dsiplay.
+     * Build a color with a given display.
+     * @param disp the displayed color
      */
     Color(final String disp) {
-        display = disp;
+        this.display = disp;
     }
 
     @Override
     public String toString() {
-        return display;
+        return this.display;
     }
 }
