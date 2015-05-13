@@ -1,9 +1,7 @@
 package fr.iutvalence.java.tp.rushhour;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import javax.swing.plaf.BorderUIResource.CompoundBorderUIResource;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
 
 /**
  * Launch a game.
@@ -50,9 +48,15 @@ public class GameLauncher {
     		System.out.println("Position y:\n");
     		Scanner y = new Scanner (System.in);
     		int ordonnee = y.nextInt();
-    		System.out.println("mouvement :\n");
+    		System.out.println("Movement (number of cases):\n");
     		Scanner movement = new Scanner (System.in);
-    		int moveToDo = movement.nextInt();
+    		int moveToDo = 0;
+    		try {
+    			moveToDo = movement.nextInt();
+    		}
+    		catch (InputMismatchException e) {
+    			// TODO
+    		}
     		try
     		{
     			currentBoard.moveVehicle(new Position(ordonnee, abscisse), moveToDo);
