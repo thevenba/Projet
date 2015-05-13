@@ -20,7 +20,7 @@ public class Vehicle {
     /** Vehicle's color. */
     private final Color      color;
     /** Vehicle's positions. */
-    private final Position[] positions;
+    private Position[] positions;
 
     /**
      * Build a vehicle with given orientation, size, color and head position.
@@ -62,8 +62,18 @@ public class Vehicle {
         return this.positions;
     }
     
+	/**
+	 * Set the vehicle's positions.
+	 * 
+	 * @param positions
+	 *            the positions to set.
+	 */
+    public void setPositions(Position[] positions) {
+    	this.positions = positions;
+    }
+    
     /**
-     * Get the vehicle's orientation
+     * Get the vehicle's orientation.
      * 
 	 * @return the orientation
 	 */
@@ -76,4 +86,14 @@ public class Vehicle {
     public String toString() {
         return this.color.toString();
     }
+
+	/**
+	 * Get the vehicle's color.
+	 * 
+	 * @return the color
+	 */
+	public Color getColor()
+	{
+		return this.color;
+	}
 }

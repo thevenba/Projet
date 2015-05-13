@@ -22,7 +22,11 @@ public enum Color {
     /** Dark green color. */
     DARK_GREEN("dg"),
     /** Purple color. */
-    PURPLE("p ");
+    PURPLE("p "), 
+    /** light purple color*/
+    LIGHT_PURPLE("lp"), 
+    /** dark (non)color*/
+    BLACK("bl");
     /** String to display */
     private final String display;
 

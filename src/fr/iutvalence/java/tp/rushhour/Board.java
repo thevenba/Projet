@@ -89,25 +89,29 @@ public abstract class Board
 	 * @throws vehicleNullException
 	 * @throws obstructingVehicleException
 	 * @throws positionOutsideBoundary
+	 * @throws invalidPositionException 
 	 */
 	public void moveVehicle(Position position, int numberOfSquares) throws vehicleNullException, obstructingVehicleException,
-			positionOutsideBoundary
+			positionOutsideBoundary, invalidPositionException
 	{
+		if ((position.getNoColumn() > 5 )||(position.getNoRow()>5)||(position.getNoColumn()<0)||(position.getNoRow()<0))
+			throw new invalidPositionException("This position isn't in the board it must be between 0,0 and 5,5");
 		Vehicle vehicleToMove = getSquare(position).getVehicle();
 		if (vehicleToMove == null)
 			throw new vehicleNullException("There is no vehicle right here !");
+ 
 		if (numberOfSquares >= 0)
 		{
 			for (int indexSquare = 0; indexSquare < numberOfSquares; indexSquare++)
 			{
 				Position[] initialPositions = vehicleToMove.getPositions();
-				Position[] finalPositions = initialPositions;
+				Position[] finalPositions = initialPositions.clone();
 				if (vehicleToMove.isOrientation() == Vehicle.HORIZONTAL)
 				{
+					if (initialPositions[0].getNoColumn()+1 >= NB_COL)
+						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
 					if (getSquare(new Position(initialPositions[0].getNoRow(), 0, initialPositions[0].getNoColumn(), 1)).getVehicle() != null)
 						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
-					if (initialPositions[0].getNoColumn()+1 > NB_COL)
-						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
 					for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
 						finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), 0,
 								finalPositions[indexPosition].getNoColumn(), 1);
@@ -115,10 +119,10 @@ public abstract class Board
 				}
 				else
 				{
+					if (initialPositions[0].getNoRow()+1 >= NB_ROW)
+						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
 					if (getSquare(new Position(initialPositions[0].getNoRow(), 1, initialPositions[0].getNoColumn(), 0)).getVehicle() != null)
 						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
-					if (initialPositions[0].getNoRow()+1 > NB_ROW)
-						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
 					for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
 						finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), 1,
 								finalPositions[indexPosition].getNoColumn(), 0);
@@ -131,13 +135,13 @@ public abstract class Board
 			for (int indexSquare = 0; indexSquare > numberOfSquares; indexSquare--)
 			{
 				Position[] initialPositions = vehicleToMove.getPositions();
-				Position[] finalPositions = initialPositions;
+				Position[] finalPositions = initialPositions.clone();
 				if (vehicleToMove.isOrientation() == Vehicle.HORIZONTAL)
 				{
-					if (getSquare(new Position(initialPositions[initialPositions.length].getNoRow(), 0, initialPositions[initialPositions.length].getNoColumn(), -1)).getVehicle() != null)
-						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
-					if (initialPositions[initialPositions.length].getNoColumn()-1 < 0)
+					if (initialPositions[initialPositions.length-1].getNoColumn()-1 < 0)
 						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
+					if (getSquare(new Position(initialPositions[initialPositions.length-1].getNoRow(), 0, initialPositions[initialPositions.length-1].getNoColumn(), -1)).getVehicle() != null)
+						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
 					for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
 						finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), 0,
 								finalPositions[indexPosition].getNoColumn(), -1);
@@ -145,10 +149,10 @@ public abstract class Board
 				}
 				else
 				{
-					if (getSquare(new Position(initialPositions[initialPositions.length].getNoRow(), -1, initialPositions[initialPositions.length].getNoColumn(), 0)).getVehicle() != null)
-						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
-					if (initialPositions[initialPositions.length].getNoRow()-1 < 0)
+					if (initialPositions[initialPositions.length-1].getNoRow()-1 < 0)
 						throw new positionOutsideBoundary("This move is forbidden, you are going to crash into the wall !");
+					if (getSquare(new Position(initialPositions[initialPositions.length-1].getNoRow(), -1, initialPositions[initialPositions.length-1].getNoColumn(), 0)).getVehicle() != null)
+						throw new obstructingVehicleException("This move is forbidden, a vehicle is getting in the way !");
 					for (int indexPosition = 0; indexPosition < finalPositions.length; indexPosition++)
 						finalPositions[indexPosition] = new Position(finalPositions[indexPosition].getNoRow(), -1,
 								finalPositions[indexPosition].getNoColumn(), 0);
@@ -165,6 +169,7 @@ public abstract class Board
 	 */
 	private void moveVehicleOnTheBoard(Vehicle vehicleToMove, Position[] initialPositions, Position[] finalPositions)
 	{
+		vehicleToMove.setPositions(finalPositions);
 		for (int indexInitPosition = 0; indexInitPosition < initialPositions.length; indexInitPosition++)
 			this.delVehicle(initialPositions[indexInitPosition]);
 		for (int indexFinalPositions = 0; indexFinalPositions < finalPositions.length; indexFinalPositions++)
