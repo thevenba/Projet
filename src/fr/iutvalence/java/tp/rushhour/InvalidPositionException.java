@@ -4,17 +4,20 @@
 package fr.iutvalence.java.tp.rushhour;
 
 /**
+ * This exception is used to indicate that it was impossible to move there
+ * because the given vehicle's position was outside of the board.
+ * 
  * @author duboitho
  *
  */
-public class invalidPositionException extends Exception
+public class InvalidPositionException extends Exception
 {
 	/**
 	 * @param message
+	 *            the message to display
 	 */
-	public invalidPositionException(String message)
+	public InvalidPositionException(String message)
 	{
-		// TODO Auto-generated constructor stub
 		super(message);
 	}
 }

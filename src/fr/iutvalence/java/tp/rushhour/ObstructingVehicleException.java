@@ -3,17 +3,20 @@
  */
 package fr.iutvalence.java.tp.rushhour;
 
-// TODO javadoc
 /**
+ * This exception is used to indicate that it was impossible to move there
+ * because the destination was already in use.
+ * 
  * @author thevenba
  *
  */
-public class obstructingVehicleException extends Exception
+public class ObstructingVehicleException extends Exception
 {
 	/**
 	 * @param message
+	 *            the message to display
 	 */
-	public obstructingVehicleException(String message)
+	public ObstructingVehicleException(String message)
 	{
 		super(message);
 	}

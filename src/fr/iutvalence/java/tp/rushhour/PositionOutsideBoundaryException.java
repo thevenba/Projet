@@ -3,18 +3,21 @@
  */
 package fr.iutvalence.java.tp.rushhour;
 
-// TODO javadoc
 /**
+ * This exception is used to indicate that it was impossible to move there
+ * because the destination was outside of the board.
+ * 
  * @author thevenba
  *
  */
-public class positionOutsideBoundaryException extends Exception
+public class PositionOutsideBoundaryException extends Exception
 {
 
 	/**
 	 * @param message
+	 *            the message to display
 	 */
-	public positionOutsideBoundaryException(String message)
+	public PositionOutsideBoundaryException(String message)
 	{
 		super(message);
 	}

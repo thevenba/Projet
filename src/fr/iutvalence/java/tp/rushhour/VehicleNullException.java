@@ -3,21 +3,23 @@
  */
 package fr.iutvalence.java.tp.rushhour;
 
-
-// TODO javadoc
 /**
+ * This exception is used to indicate that it was impossible to move a vehicle
+ * because there was no vehicle at the given position.
+ * 
  * @author thevenba
  *
  */
-public class vehicleNullException extends Exception
+public class VehicleNullException extends Exception
 {
 
 	/**
 	 * @param message
+	 *            the message to display
 	 */
-	public vehicleNullException(String message)
+	public VehicleNullException(String message)
 	{
 		super(message);
 	}
-	
+
 }
