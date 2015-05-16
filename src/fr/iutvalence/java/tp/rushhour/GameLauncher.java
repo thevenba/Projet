@@ -50,6 +50,9 @@ public class GameLauncher
 			case 2:
 				currentBoard = new Level2();
 				break;
+			case 3:
+				currentBoard = new Level3();
+				break;
 			default:
 				currentBoard = new Level1();
 		}
@@ -93,8 +96,7 @@ public class GameLauncher
 			} catch (InputMismatchException e1)
 			{
 			}
-			System.out
-					.println("Movement (EITHER '+' or 'nothing' to move right or up (depends on horizontal or vertical) OR '-' to move left or down (depends on horizontal or vertical), followed by a number of squares):\n");
+			System.out.println("Movement (EITHER '+' or 'nothing' to move right or down (depends on horizontal or vertical) OR '-' to move left or up (depends on horizontal or vertical), followed by a number of squares):\n");
 			Scanner movement = new Scanner(System.in);
 			int moveToDo = 0;
 			try
