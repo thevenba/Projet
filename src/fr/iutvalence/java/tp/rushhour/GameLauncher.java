@@ -3,6 +3,10 @@ package fr.iutvalence.java.tp.rushhour;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.swing.SwingUtilities;
+
+import fr.iutvalence.java.tp.rushhour.hci.DisplayTask;
+
 /**
  * Launch a game.
  *
@@ -24,6 +28,8 @@ public class GameLauncher
 	 */
 	public static void main(final String... args)
 	{
+		DisplayTask displayTask = new DisplayTask();
+		SwingUtilities.invokeLater(displayTask);
 		selectLevel();
 	}
 
@@ -32,6 +38,7 @@ public class GameLauncher
 	 */
 	private static void selectLevel()
 	{
+		
 		Board currentBoard;
 		System.out.println("Choose your level, from 1 to 40");
 		Scanner level = new Scanner(System.in);
@@ -109,9 +116,7 @@ public class GameLauncher
 			{
 				currentBoard.moveVehicle(new Position(ordonnee, abscisse),
 						moveToDo);
-			} catch (VehicleNullException | ObstructingVehicleException
-					| PositionOutsideBoundaryException
-					| InvalidPositionException e)
+			} catch (VehicleNullException | ObstructingVehicleException | PositionOutsideBoundaryException | InvalidPositionException e)
 			{
 				e.printStackTrace();
 			}
