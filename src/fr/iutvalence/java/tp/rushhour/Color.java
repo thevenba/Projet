@@ -23,7 +23,7 @@ public enum Color
 	/** Dark green color. */
 	DARK_GREEN("dg"),
 	/** Purple color. */
-	PURPLE("p "),
+	DARK_PURPLE("p "),
 	/** Light purple color */
 	LIGHT_PURPLE("lp"),
 	/** Black (non)color */

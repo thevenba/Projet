@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
 
+import fr.iutvalence.java.tp.rushhour.Board;
 import fr.iutvalence.java.tp.rushhour.interfaces.ControlOfRushHour;
 
 /**
@@ -32,12 +33,15 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 	private JSplitPane splitPane;
 
 	private ControlButtonsHci controlButtonsHci;
+	
+	private Board board;
 
 	/**
 	 * 
 	 */
-	public DisplayTask()
+	public DisplayTask(Board board)
 	{
+		this.board = board;
 	}
 	
 	public void initGraphicInterface()
@@ -47,7 +51,7 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 		this.window.setSize(600, 600);
 		this.window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.window.setResizable(false);
-		this.boardHci = new BoardHci(this);
+		this.boardHci = new BoardHci(this.board);
 		this.controlButtonsHci = new ControlButtonsHci(this);
 		this.splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.boardHci, this.controlButtonsHci);
 		this.splitPane.setEnabled(false);
