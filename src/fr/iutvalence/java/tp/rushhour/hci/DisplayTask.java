@@ -11,8 +11,11 @@ import java.awt.event.KeyListener;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import fr.iutvalence.java.tp.rushhour.Board;
 import fr.iutvalence.java.tp.rushhour.Color;
@@ -30,7 +33,7 @@ import fr.iutvalence.java.tp.rushhour.VehicleNullException;
  * @author thevenba
  *
  */
-public class DisplayTask implements ActionListener, Runnable, KeyListener
+public class DisplayTask implements ActionListener, Runnable, KeyListener, ChangeListener
 {
 	/* private final ControlOfRushHour controller;*/
 	
@@ -76,7 +79,7 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 		this.window.setResizable(false);
 		this.boardHci = new BoardHci(this, this.board);
 		this.boardHci.setFocusable(false);
-		this.controlButtonsHci = new ControlButtonsHci(this);
+		this.controlButtonsHci = new ControlButtonsHci(this, this);
 		this.splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.boardHci, this.controlButtonsHci);
 		this.splitPane.setEnabled(false);
 		this.splitPane.setResizeWeight(1.0);
@@ -97,7 +100,21 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 		if (source == this.controlButtonsHci.getResetButton())
 		{
 			/* TODO a faire marcher */
-			this.initGraphicInterface();
+			if (this.board instanceof Level1)
+			{
+				this.board = new Level1();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
+			else if (this.board instanceof Level2)
+			{
+				this.board = new Level2();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
+			else
+			{
+				this.board = new Level3();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
 			return;
 		}
 		if (source instanceof RhButton)
@@ -153,17 +170,17 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 							    if (s == "Level 1")
 							    {
 							    	this.board = new Level1();
-							    	this.initGraphicInterface();
+							    	this.boardHci.setBoardToDisplay(this.board);
 							    }
 							    else if (s == "Level 2")
 							    {
 							    	this.board = new Level2();
-							    	this.initGraphicInterface();
+							    	this.boardHci.setBoardToDisplay(this.board);
 							    }
 							    else
 							    {
 							    	this.board = new Level3();
-							    	this.initGraphicInterface();
+							    	this.boardHci.setBoardToDisplay(this.board);
 							    }
 							}
 							return;
@@ -221,6 +238,30 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 	public void keyTyped(KeyEvent arg0)
 	{
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent event)
+	{
+		// TODO Auto-generated method stub
+		JSpinner source = (JSpinner) event.getSource();
+		String level = (String) source.getValue();
+		if (level == "Level 1")
+		{
+			this.board = new Level1();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
+		else if (level == "Level 2")
+		{
+			this.board = new Level2();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
+		else
+		{
+			this.board = new Level3();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
 		
 	}
 }

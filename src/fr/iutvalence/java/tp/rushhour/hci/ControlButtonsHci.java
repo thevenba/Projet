@@ -3,12 +3,14 @@
  */
 package fr.iutvalence.java.tp.rushhour.hci;
 
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerListModel;
+import javax.swing.event.ChangeListener;
 
 /**
  * @author thevenba
@@ -18,19 +20,25 @@ public class ControlButtonsHci extends JPanel
 {
 	private final JButton resetButton;
 	
-	private final JButton changeLevelButton;
+	private final JSpinner changeLevelSpinner;
 	
-	public ControlButtonsHci(ActionListener buttonsListener)
+	private final SpinnerListModel listLevel;
+	
+	public ControlButtonsHci(ActionListener buttonsListener, ChangeListener changeListener)
 	{
 		this.setLayout(new FlowLayout());
+		
 		this.resetButton = new JButton("Reset level");
 		this.resetButton.setFocusable(false);
 		this.resetButton.addActionListener(buttonsListener);
-		this.changeLevelButton = new JButton("Change level");
-		this.changeLevelButton.setFocusable(false);
-		this.changeLevelButton.addActionListener(buttonsListener);
+		
+		String[] levels = {"Level 1", "Level 2", "level 3"};
+		this.listLevel = new SpinnerListModel(levels);
+		
+		this.changeLevelSpinner = new JSpinner(this.listLevel);
+		this.changeLevelSpinner.addChangeListener(changeListener);
 		this.add(this.resetButton);
-		this.add(this.changeLevelButton);
+		this.add(this.changeLevelSpinner);
 	}
 
 	/**
@@ -44,8 +52,8 @@ public class ControlButtonsHci extends JPanel
 	/**
 	 * @return the changeLevelButton
 	 */
-	public JButton getChangeLevelButton()
+	public JSpinner getChangeLevelButton()
 	{
-		return changeLevelButton;
+		return changeLevelSpinner;
 	}
 }
