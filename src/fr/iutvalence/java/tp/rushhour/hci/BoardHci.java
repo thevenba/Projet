@@ -47,7 +47,7 @@ public class BoardHci extends JPanel
 		this.refreshBoard();
 	}
 
-	private void refreshBoard()
+	public void refreshBoard()
 	{
 		for (int colPosition = 0; colPosition < Board.NB_COL; colPosition++)
 			for (int rowPosition = 0; rowPosition < Board.NB_ROW; rowPosition++)
@@ -120,6 +120,7 @@ public class BoardHci extends JPanel
 	public void setBoardToDisplay(Board boardToDisplay)
 	{
 		this.boardToDisplay = boardToDisplay;
+		this.refreshBoard();
 	}
 
 	
