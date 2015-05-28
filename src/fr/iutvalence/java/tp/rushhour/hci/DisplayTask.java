@@ -130,7 +130,7 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 						{
 							try
 							{
-								this.board.moveVehicle(new Position(selectedColumn,selectedRow), selectedColumnDelta-selectedColumn);
+								this.board.moveVehicle(new Position(selectedColumn,selectedRow), selectedRowDelta-selectedRow);
 							} catch (VehicleNullException
 									| ObstructingVehicleException
 									| PositionOutsideBoundaryException
