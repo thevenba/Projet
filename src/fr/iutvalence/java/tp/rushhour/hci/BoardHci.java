@@ -22,7 +22,7 @@ public class BoardHci extends JPanel
 	private RhButton[][] buttonsTable;
 	private Board boardToDisplay;
 	
-	public BoardHci(Board boardToDisplay)
+	public BoardHci(ActionListener buttonsListener, Board boardToDisplay)
 	{
 		this.buttonsTable = new RhButton[Board.NB_ROW][Board.NB_COL];
 		this.boardToDisplay = boardToDisplay;
@@ -35,11 +35,13 @@ public class BoardHci extends JPanel
 					{
 						this.buttonsTable[rowPosition][colPosition] = new RhButton("Exit", rowPosition, colPosition);
 						this.add(this.buttonsTable[rowPosition][colPosition]);
+						this.buttonsTable[rowPosition][colPosition].addActionListener(buttonsListener);
 					}
 					else
 					{
 						this.buttonsTable[rowPosition][colPosition] = new RhButton(rowPosition, colPosition);
 						this.add(this.buttonsTable[rowPosition][colPosition]);
+						this.buttonsTable[rowPosition][colPosition].addActionListener(buttonsListener);
 					}
 				}
 		this.refreshBoard();
@@ -112,4 +114,13 @@ public class BoardHci extends JPanel
 		this.revalidate();
 	}
 
+	/**
+	 * @param boardToDisplay the boardToDisplay to set
+	 */
+	public void setBoardToDisplay(Board boardToDisplay)
+	{
+		this.boardToDisplay = boardToDisplay;
+	}
+
+	
 }

@@ -3,6 +3,7 @@
  */
 package fr.iutvalence.java.tp.rushhour.hci;
 
+import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
@@ -30,5 +31,21 @@ public class ControlButtonsHci extends JPanel
 		this.changeLevelButton.addActionListener(buttonsListener);
 		this.add(this.resetButton);
 		this.add(this.changeLevelButton);
+	}
+
+	/**
+	 * @return the resetButton
+	 */
+	public JButton getResetButton()
+	{
+		return resetButton;
+	}
+
+	/**
+	 * @return the changeLevelButton
+	 */
+	public JButton getChangeLevelButton()
+	{
+		return changeLevelButton;
 	}
 }

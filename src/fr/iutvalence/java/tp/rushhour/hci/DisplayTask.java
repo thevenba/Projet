@@ -11,11 +11,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
 
 import fr.iutvalence.java.tp.rushhour.Board;
+import fr.iutvalence.java.tp.rushhour.Level2;
 import fr.iutvalence.java.tp.rushhour.interfaces.ControlOfRushHour;
 
 /**
@@ -51,7 +53,8 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 		this.window.setSize(600, 600);
 		this.window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.window.setResizable(false);
-		this.boardHci = new BoardHci(this.board);
+		this.boardHci = new BoardHci(this, this.board);
+		this.boardHci.setFocusable(false);
 		this.controlButtonsHci = new ControlButtonsHci(this);
 		this.splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, this.boardHci, this.controlButtonsHci);
 		this.splitPane.setEnabled(false);
@@ -67,9 +70,18 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent event)
 	{
-		// TODO Auto-generated method stub
+		JComponent source = (JComponent) event.getSource();
+		if (source.getParent() == this.controlButtonsHci.getResetButton())
+		{
+			this.boardHci.setBoardToDisplay(board);
+			return;
+		}
+		if (source instanceof RhButton)
+		{
+			
+		}
 		
 	}
 
