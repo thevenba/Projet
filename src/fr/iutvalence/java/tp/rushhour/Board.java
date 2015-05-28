@@ -227,7 +227,7 @@ public abstract class Board
 		for (int indexFinalPositions = 0; indexFinalPositions < finalPositions.length; indexFinalPositions++)
 			this.addVehicle(finalPositions[indexFinalPositions], vehicleToMove);
 	}
-
+	
 	@Override
 	public String toString()
 	{

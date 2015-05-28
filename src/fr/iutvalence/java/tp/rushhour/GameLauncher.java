@@ -28,7 +28,7 @@ public class GameLauncher
 	 */
 	public static void main(final String... args)
 	{
-		DisplayTask displayTask = new DisplayTask(new Level3());
+		DisplayTask displayTask = new DisplayTask(new Level1());
 		SwingUtilities.invokeLater(displayTask);
 		selectLevel();
 	}

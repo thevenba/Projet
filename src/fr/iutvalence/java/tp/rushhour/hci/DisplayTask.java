@@ -47,6 +47,8 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 	
 	private Board board;
 	
+	private Board initBoard;
+	
 	private int clickCounter;
 	
 	private int selectedRow;
@@ -65,6 +67,7 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 	public DisplayTask(Board board)
 	{
 		this.board = board;
+		this.initBoard = board;
 		this.clickCounter = DisplayTask.CLICK_COUNTER_DEFAULT;
 	}
 	
@@ -97,6 +100,7 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 		JComponent source = (JComponent) event.getSource();
 		if (source == this.controlButtonsHci.getResetButton())
 		{
+			this.board = this.initBoard;
 			this.boardHci.setBoardToDisplay(this.board);
 			return;
 		}
@@ -108,7 +112,6 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 				selectedColumn = ((RhButton) source).getColumn();
 				if (this.board.getSquare(new Position(selectedColumn, selectedRow)).getVehicle() == null)
 				{
-					System.out.println("pas de vehicle");
 					return;
 				}
 				selectedOrientation = this.board.getSquare(new Position(selectedColumn, selectedRow)).getVehicle().isOrientation();
@@ -122,7 +125,6 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 					{
 						if (selectedColumn != selectedColumnDelta)
 						{
-							System.out.println("pas la bonne orientation");
 							this.clickCounter = 0;
 							return;
 						}
@@ -148,7 +150,6 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 					{
 						if (this.selectedRow != selectedRowDelta)
 						{
-							System.out.println("pas la bonne sdd");
 							this.clickCounter = 0;
 							return;
 						}
