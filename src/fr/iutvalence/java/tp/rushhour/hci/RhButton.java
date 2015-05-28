@@ -3,8 +3,6 @@
  */
 package fr.iutvalence.java.tp.rushhour.hci;
 
-import javax.swing.Action;
-import javax.swing.Icon;
 import javax.swing.JButton;
 
 /**

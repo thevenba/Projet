@@ -6,7 +6,6 @@ package fr.iutvalence.java.tp.rushhour.hci;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import fr.iutvalence.java.tp.rushhour.Board;

@@ -3,29 +3,28 @@
  */
 package fr.iutvalence.java.tp.rushhour.hci;
 
-import java.awt.Component;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JSplitPane;
 import javax.swing.WindowConstants;
 
 import fr.iutvalence.java.tp.rushhour.Board;
+import fr.iutvalence.java.tp.rushhour.Color;
 import fr.iutvalence.java.tp.rushhour.InvalidPositionException;
 import fr.iutvalence.java.tp.rushhour.Level1;
 import fr.iutvalence.java.tp.rushhour.Level2;
+import fr.iutvalence.java.tp.rushhour.Level3;
 import fr.iutvalence.java.tp.rushhour.ObstructingVehicleException;
 import fr.iutvalence.java.tp.rushhour.Position;
 import fr.iutvalence.java.tp.rushhour.PositionOutsideBoundaryException;
 import fr.iutvalence.java.tp.rushhour.Vehicle;
 import fr.iutvalence.java.tp.rushhour.VehicleNullException;
-import fr.iutvalence.java.tp.rushhour.interfaces.ControlOfRushHour;
 
 /**
  * @author thevenba
@@ -47,8 +46,6 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 	
 	private Board board;
 	
-	private Board initBoard;
-	
 	private int clickCounter;
 	
 	private int selectedRow;
@@ -67,7 +64,6 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 	public DisplayTask(Board board)
 	{
 		this.board = board;
-		this.initBoard = board;
 		this.clickCounter = DisplayTask.CLICK_COUNTER_DEFAULT;
 	}
 	
@@ -100,8 +96,8 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 		JComponent source = (JComponent) event.getSource();
 		if (source == this.controlButtonsHci.getResetButton())
 		{
-			this.board = this.initBoard;
-			this.boardHci.setBoardToDisplay(this.board);
+			/* TODO a faire marcher */
+			this.initGraphicInterface();
 			return;
 		}
 		if (source instanceof RhButton)
@@ -139,10 +135,37 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 									| InvalidPositionException e)
 							{
 								// TODO Auto-generated catch block
+								JOptionPane.showMessageDialog(window,
+									    e.toString(),
+									    "Inane warning",
+									    JOptionPane.WARNING_MESSAGE);
 								e.printStackTrace();
 							}
 							this.clickCounter = 0;
 							this.boardHci.refreshBoard();
+							if ((this.board.getSquare(new Position(2, 5)).getVehicle() != null)
+									&& (this.board.getSquare(new Position(2, 5)).getVehicle()
+											.getColor() == Color.RED))
+							{
+								Object[] levels = {"Level 1", "Level 2", "Level 3"};
+								String s = (String)JOptionPane.showInputDialog(this.window,
+									    "WTF !? It seems you've just won...hopefully, the next level will get you down on your knees !", "Win", JOptionPane.PLAIN_MESSAGE, null, levels, "Level 1");;
+							    if (s == "Level 1")
+							    {
+							    	this.board = new Level1();
+							    	this.initGraphicInterface();
+							    }
+							    else if (s == "Level 2")
+							    {
+							    	this.board = new Level2();
+							    	this.initGraphicInterface();
+							    }
+							    else
+							    {
+							    	this.board = new Level3();
+							    	this.initGraphicInterface();
+							    }
+							}
 							return;
 						}
 					}
@@ -164,6 +187,10 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener
 									| InvalidPositionException e)
 							{
 								// TODO Auto-generated catch block
+								JOptionPane.showMessageDialog(window,
+									    e.toString(),
+									    "Inane warning",
+									    JOptionPane.WARNING_MESSAGE);
 								e.printStackTrace();
 							}
 							this.clickCounter = 0;

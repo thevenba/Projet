@@ -30,7 +30,6 @@ public class GameLauncher
 	{
 		DisplayTask displayTask = new DisplayTask(new Level1());
 		SwingUtilities.invokeLater(displayTask);
-		selectLevel();
 	}
 
 	/**
