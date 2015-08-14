@@ -29,7 +29,9 @@ public enum Color
 	/** Black (non)color */
 	BLACK("bl"),
 	/** Pink color */
-	PINK("pi");
+	PINK("pi"),
+	/** Green color */
+	GREEN("g ");
 	/** String to display */
 	private final String display;
 

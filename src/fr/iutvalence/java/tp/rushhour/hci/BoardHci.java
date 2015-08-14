@@ -110,6 +110,11 @@ public class BoardHci extends JPanel
 					this.buttonsTable[rowPosition][colPosition].removeAll();
 					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.YELLOW);
 				}
+				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.GREEN)
+				{
+					this.buttonsTable[rowPosition][colPosition].removeAll();
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.GREEN);
+				}
 		this.revalidate();
 	}
 

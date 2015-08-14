@@ -23,6 +23,7 @@ import fr.iutvalence.java.tp.rushhour.InvalidPositionException;
 import fr.iutvalence.java.tp.rushhour.Level1;
 import fr.iutvalence.java.tp.rushhour.Level2;
 import fr.iutvalence.java.tp.rushhour.Level3;
+import fr.iutvalence.java.tp.rushhour.Level4;
 import fr.iutvalence.java.tp.rushhour.ObstructingVehicleException;
 import fr.iutvalence.java.tp.rushhour.Position;
 import fr.iutvalence.java.tp.rushhour.PositionOutsideBoundaryException;
@@ -110,9 +111,14 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 				this.board = new Level2();
 				this.boardHci.setBoardToDisplay(this.board);
 			}
-			else
+			else if (this.board instanceof Level3)
 			{
 				this.board = new Level3();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
+			else
+			{
+				this.board = new Level4();
 				this.boardHci.setBoardToDisplay(this.board);
 			}
 			return;
@@ -164,7 +170,7 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 									&& (this.board.getSquare(new Position(2, 5)).getVehicle()
 											.getColor() == Color.RED))
 							{
-								Object[] levels = {"Level 1", "Level 2", "Level 3"};
+								Object[] levels = {"Level 1", "Level 2", "Level 3", "Level 4"};
 								String s = (String)JOptionPane.showInputDialog(this.window,
 									    "WTF !? It seems you've just won...hopefully, the next level will get you down on your knees !", "Win", JOptionPane.PLAIN_MESSAGE, null, levels, "Level 1");;
 							    if (s == "Level 1")
@@ -177,9 +183,14 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 							    	this.board = new Level2();
 							    	this.boardHci.setBoardToDisplay(this.board);
 							    }
-							    else
+							    else if (s == "Level 3")
 							    {
 							    	this.board = new Level3();
+							    	this.boardHci.setBoardToDisplay(this.board);
+							    }
+							    else
+							    {
+							    	this.board = new Level4();
 							    	this.boardHci.setBoardToDisplay(this.board);
 							    }
 							}
@@ -257,9 +268,14 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 			this.board = new Level2();
 			this.boardHci.setBoardToDisplay(this.board);
 		}
-		else
+		else if (level == "Level 3")
 		{
 			this.board = new Level3();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
+		else
+		{
+			this.board = new Level4();
 			this.boardHci.setBoardToDisplay(this.board);
 		}
 		

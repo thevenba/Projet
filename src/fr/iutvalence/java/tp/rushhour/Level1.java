@@ -21,7 +21,7 @@ public class Level1 extends Board
 		vehicles.add(new Vehicle(Vehicle.VERTICAL, 3, Color.YELLOW, new Position(2, 5)));
 		vehicles.add(new Vehicle(Vehicle.VERTICAL, 2, Color.ORANGE, new Position(5, 0)));
 		vehicles.add(new Vehicle(Vehicle.HORIZONTAL, 2, Color.LIGHT_GREEN, new Position(0, 1)));
-		vehicles.add(new Vehicle(Vehicle.HORIZONTAL, 3, Color.DARK_GREEN, new Position(5, 4)));
+		vehicles.add(new Vehicle(Vehicle.HORIZONTAL, 3, Color.GREEN, new Position(5, 4)));
 		vehicles.add(new Vehicle(Vehicle.VERTICAL, 3, Color.DARK_PURPLE, new Position(3, 0)));
 		return vehicles;
 	}
