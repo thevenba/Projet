@@ -14,14 +14,16 @@ public enum Color
 	LIGHT_BLUE("lb"),
 	/** Dark blue color. */
 	DARK_BLUE("db"),
-	/** Yellow color. */
-	YELLOW("y "),
+	/** Light yellow color. */
+	LIGHT_YELLOW("ly"),
+	/** Dark yellow color. */
+	DARK_YELLOW("dy"),
 	/** Orange color. */
 	ORANGE("o "),
 	/** Light green color. */
-	LIGHT_GREEN("lg"),
+	LIGHT_GREEN("ln"),
 	/** Dark green color. */
-	DARK_GREEN("dg"),
+	DARK_GREEN("dn"),
 	/** Purple color. */
 	DARK_PURPLE("p "),
 	/** Light purple color */
@@ -30,8 +32,14 @@ public enum Color
 	BLACK("bl"),
 	/** Pink color */
 	PINK("pi"),
-	/** Green color */
-	GREEN("g ");
+	/** Light cyan color */
+	LIGHT_CYAN("lc"),
+	/** Dark cyan color */
+	DARK_CYAN("dc"),
+	/** Light grey color */
+	LIGHT_GRAY("lg"),
+	/** Dark grey color */
+	DARK_GRAY("lg");
 	/** String to display */
 	private final String display;
 

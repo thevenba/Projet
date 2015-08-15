@@ -63,7 +63,7 @@ public class BoardHci extends JPanel
 				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.DARK_BLUE)
 				{
 					this.buttonsTable[rowPosition][colPosition].removeAll();
-					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.BLUE.darker());
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.BLUE.brighter().darker());
 				}
 				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.DARK_GREEN)
 				{
@@ -73,7 +73,7 @@ public class BoardHci extends JPanel
 				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.LIGHT_BLUE)
 				{
 					this.buttonsTable[rowPosition][colPosition].removeAll();
-					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.BLUE.brighter());
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.BLUE.darker().brighter());
 				}
 				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.LIGHT_GREEN)
 				{
@@ -105,15 +105,35 @@ public class BoardHci extends JPanel
 					this.buttonsTable[rowPosition][colPosition].removeAll();
 					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.RED);
 				}
-				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.YELLOW)
+				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.LIGHT_YELLOW)
 				{
 					this.buttonsTable[rowPosition][colPosition].removeAll();
-					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.YELLOW);
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.YELLOW.brighter());
 				}
-				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.GREEN)
+				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.DARK_YELLOW)
 				{
 					this.buttonsTable[rowPosition][colPosition].removeAll();
-					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.GREEN);
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.YELLOW.darker());
+				}
+				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.LIGHT_CYAN)
+				{
+					this.buttonsTable[rowPosition][colPosition].removeAll();
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.CYAN.brighter());
+				}
+				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.DARK_CYAN)
+				{
+					this.buttonsTable[rowPosition][colPosition].removeAll();
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.CYAN.darker());
+				}
+				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.LIGHT_GRAY)
+				{
+					this.buttonsTable[rowPosition][colPosition].removeAll();
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.LIGHT_GRAY);
+				}
+				else if (this.boardToDisplay.getSquare(new Position(colPosition, rowPosition)).getVehicle().getColor() == Color.DARK_GRAY)
+				{
+					this.buttonsTable[rowPosition][colPosition].removeAll();
+					this.buttonsTable[rowPosition][colPosition].setBackground(java.awt.Color.DARK_GRAY);
 				}
 		this.revalidate();
 	}

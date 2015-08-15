@@ -24,6 +24,7 @@ import fr.iutvalence.java.tp.rushhour.Level1;
 import fr.iutvalence.java.tp.rushhour.Level2;
 import fr.iutvalence.java.tp.rushhour.Level3;
 import fr.iutvalence.java.tp.rushhour.Level4;
+import fr.iutvalence.java.tp.rushhour.Level5;
 import fr.iutvalence.java.tp.rushhour.ObstructingVehicleException;
 import fr.iutvalence.java.tp.rushhour.Position;
 import fr.iutvalence.java.tp.rushhour.PositionOutsideBoundaryException;
@@ -116,9 +117,14 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 				this.board = new Level3();
 				this.boardHci.setBoardToDisplay(this.board);
 			}
-			else
+			else if (this.board instanceof Level4)
 			{
 				this.board = new Level4();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
+			else if (this.board instanceof Level5)
+			{
+				this.board = new Level5();
 				this.boardHci.setBoardToDisplay(this.board);
 			}
 			return;
@@ -188,9 +194,14 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 							    	this.board = new Level3();
 							    	this.boardHci.setBoardToDisplay(this.board);
 							    }
-							    else
+							    else if (s == "Level 4")
 							    {
 							    	this.board = new Level4();
+							    	this.boardHci.setBoardToDisplay(this.board);
+							    }
+							    else if (s == "Level 5")
+							    {
+							    	this.board = new Level5();
 							    	this.boardHci.setBoardToDisplay(this.board);
 							    }
 							}
@@ -273,11 +284,15 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 			this.board = new Level3();
 			this.boardHci.setBoardToDisplay(this.board);
 		}
-		else
+		else if (level == "Level 4")
 		{
 			this.board = new Level4();
 			this.boardHci.setBoardToDisplay(this.board);
 		}
-		
+		else if (level == "Level 5")
+		{
+			this.board = new Level5();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
 	}
 }
