@@ -15,7 +15,7 @@ public class Level1 extends Board
 	protected List<Vehicle> createVehicle()
 	{
 		final List<Vehicle> vehicles = new LinkedList<>();
-		vehicles.add(new Vehicle(Vehicle.HORIZONTAL, 2, Color.LIGHT_YELLOW, new Position(2, 2)));
+		vehicles.add(new Vehicle(Vehicle.HORIZONTAL, 2, Color.RED, new Position(2, 2)));
 		vehicles.add(new Vehicle(Vehicle.HORIZONTAL, 2, Color.LIGHT_BLUE, new Position(4, 5)));
 		vehicles.add(new Vehicle(Vehicle.VERTICAL, 3, Color.DARK_BLUE, new Position(3, 3)));
 		vehicles.add(new Vehicle(Vehicle.VERTICAL, 3, Color.DARK_YELLOW, new Position(2, 5)));

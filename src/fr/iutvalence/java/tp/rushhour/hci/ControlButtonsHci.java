@@ -32,7 +32,7 @@ public class ControlButtonsHci extends JPanel
 		this.resetButton.setFocusable(false);
 		this.resetButton.addActionListener(buttonsListener);
 		
-		String[] levels = {"Level 1", "Level 2", "Level 3", "Level 4", "Level 5"};
+		String[] levels = {"Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10"};
 		this.listLevel = new SpinnerListModel(levels);
 		
 		this.changeLevelSpinner = new JSpinner(this.listLevel);

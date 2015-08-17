@@ -21,10 +21,15 @@ import fr.iutvalence.java.tp.rushhour.Board;
 import fr.iutvalence.java.tp.rushhour.Color;
 import fr.iutvalence.java.tp.rushhour.InvalidPositionException;
 import fr.iutvalence.java.tp.rushhour.Level1;
+import fr.iutvalence.java.tp.rushhour.Level10;
 import fr.iutvalence.java.tp.rushhour.Level2;
 import fr.iutvalence.java.tp.rushhour.Level3;
 import fr.iutvalence.java.tp.rushhour.Level4;
 import fr.iutvalence.java.tp.rushhour.Level5;
+import fr.iutvalence.java.tp.rushhour.Level6;
+import fr.iutvalence.java.tp.rushhour.Level7;
+import fr.iutvalence.java.tp.rushhour.Level8;
+import fr.iutvalence.java.tp.rushhour.Level9;
 import fr.iutvalence.java.tp.rushhour.ObstructingVehicleException;
 import fr.iutvalence.java.tp.rushhour.Position;
 import fr.iutvalence.java.tp.rushhour.PositionOutsideBoundaryException;
@@ -127,6 +132,31 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 				this.board = new Level5();
 				this.boardHci.setBoardToDisplay(this.board);
 			}
+			else if (this.board instanceof Level6)
+			{
+				this.board = new Level6();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
+			else if (this.board instanceof Level7)
+			{
+				this.board = new Level7();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
+			else if (this.board instanceof Level8)
+			{
+				this.board = new Level8();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
+			else if (this.board instanceof Level9)
+			{
+				this.board = new Level9();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
+			else if (this.board instanceof Level10)
+			{
+				this.board = new Level10();
+				this.boardHci.setBoardToDisplay(this.board);
+			}
 			return;
 		}
 		if (source instanceof RhButton)
@@ -176,7 +206,7 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 									&& (this.board.getSquare(new Position(2, 5)).getVehicle()
 											.getColor() == Color.RED))
 							{
-								Object[] levels = {"Level 1", "Level 2", "Level 3", "Level 4"};
+								Object[] levels = {"Level 1", "Level 2", "Level 3", "Level 4", "Level 5", "Level 6", "Level 7", "Level 8", "Level 9", "Level 10"};
 								String s = (String)JOptionPane.showInputDialog(this.window,
 									    "WTF !? It seems you've just won...hopefully, the next level will get you down on your knees !", "Win", JOptionPane.PLAIN_MESSAGE, null, levels, "Level 1");;
 							    if (s == "Level 1")
@@ -202,6 +232,31 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 							    else if (s == "Level 5")
 							    {
 							    	this.board = new Level5();
+							    	this.boardHci.setBoardToDisplay(this.board);
+							    }
+							    else if (s == "Level 6")
+							    {
+							    	this.board = new Level6();
+							    	this.boardHci.setBoardToDisplay(this.board);
+							    }
+							    else if (s == "Level 7")
+							    {
+							    	this.board = new Level7();
+							    	this.boardHci.setBoardToDisplay(this.board);
+							    }
+							    else if (s == "Level 8")
+							    {
+							    	this.board = new Level8();
+							    	this.boardHci.setBoardToDisplay(this.board);
+							    }
+							    else if (s == "Level 9")
+							    {
+							    	this.board = new Level9();
+							    	this.boardHci.setBoardToDisplay(this.board);
+							    }
+							    else if (s == "Level 10")
+							    {
+							    	this.board = new Level10();
 							    	this.boardHci.setBoardToDisplay(this.board);
 							    }
 							}
@@ -292,6 +347,31 @@ public class DisplayTask implements ActionListener, Runnable, KeyListener, Chang
 		else if (level == "Level 5")
 		{
 			this.board = new Level5();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
+		else if (level == "Level 6")
+		{
+			this.board = new Level6();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
+		else if (level == "Level 7")
+		{
+			this.board = new Level7();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
+		else if (level == "Level 8")
+		{
+			this.board = new Level8();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
+		else if (level == "Level 9")
+		{
+			this.board = new Level9();
+			this.boardHci.setBoardToDisplay(this.board);
+		}
+		else if (level == "Level 10")
+		{
+			this.board = new Level10();
 			this.boardHci.setBoardToDisplay(this.board);
 		}
 	}
